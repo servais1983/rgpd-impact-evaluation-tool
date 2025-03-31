@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outil d'Évaluation d'Impact RGPD</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-shield-alt"></i> Outil d'Évaluation d'Impact RGPD</h1>
+            <p>Évaluez vos obligations de notification suite à une violation de données</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="intro">
+            <h2>Évaluation de l'impact d'une violation de données</h2>
+            <p>Cet outil vous aide à déterminer si vous devez notifier l'Autorité de Protection des Données (APD) en cas de violation de données personnelles, et vous guide dans la préparation des documents nécessaires.</p>
+            <button id="start-evaluation" class="btn-primary">Commencer l'évaluation</button>
+        </section>
+
+        <section id="evaluation-form" class="hidden">
+            <h2>Questionnaire d'évaluation</h2>
+            <form id="data-breach-form">
+                <!-- Étape 1: Informations générales sur l'incident -->
+                <div class="form-step" id="step-1">
+                    <h3>Étape 1: Informations générales sur l'incident</h3>
+                    
+                    <div class="form-group">
+                        <label for="breach-date">Date de découverte de la violation :</label>
+                        <input type="date" id="breach-date" name="breach-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="breach-type">Type de violation :</label>
+                        <select id="breach-type" name="breach-type" required>
+                            <option value="">-- Sélectionnez --</option>
+                            <option value="unauthorized-access">Accès non autorisé</option>
+                            <option value="data-theft">Vol de données</option>
+                            <option value="data-loss">Perte de données</option>
+                            <option value="data-alteration">Altération de données</option>
+                            <option value="disclosure">Divulgation non autorisée</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="breach-description">Description de l'incident :</label>
+                        <textarea id="breach-description" name="breach-description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-next">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 2: Types de données concernées -->
+                <div class="form-step hidden" id="step-2">
+                    <h3>Étape 2: Types de données concernées</h3>
+                    
+                    <div class="form-group">
+                        <p>Quels types de données personnelles ont été affectés ? (Cochez toutes les réponses applicables)</p>
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-identification" name="data-types" value="identification">
+                                <label for="data-identification">Données d'identification (nom, prénom, adresse)</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-contact" name="data-types" value="contact">
+                                <label for="data-contact">Coordonnées de contact (email, téléphone)</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-financial" name="data-types" value="financial">
+                                <label for="data-financial">Données financières (coordonnées bancaires, numéros de carte)</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-authentication" name="data-types" value="authentication">
+                                <label for="data-authentication">Identifiants et mots de passe</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-official" name="data-types" value="official">
+                                <label for="data-official">Documents d'identité officiels (passeport, CNI, etc.)</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-health" name="data-types" value="health">
+                                <label for="data-health">Données de santé</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-biometric" name="data-types" value="biometric">
+                                <label for="data-biometric">Données biométriques</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-genetic" name="data-types" value="genetic">
+                                <label for="data-genetic">Données génétiques</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-sexual" name="data-types" value="sexual">
+                                <label for="data-sexual">Orientation sexuelle, vie sexuelle</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-criminal" name="data-types" value="criminal">
+                                <label for="data-criminal">Condamnations pénales, infractions</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-political" name="data-types" value="political">
+                                <label for="data-political">Opinions politiques, convictions religieuses ou philosophiques</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-racial" name="data-types" value="racial">
+                                <label for="data-racial">Origine raciale ou ethnique</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-other" name="data-types" value="other">
+                                <label for="data-other">Autres types de données</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group data-other-details hidden">
+                        <label for="data-other-description">Précisez les autres types de données :</label>
+                        <textarea id="data-other-description" name="data-other-description" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev">Précédent</button>
+                        <button type="button" class="btn-next">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 3: Impact potentiel -->
+                <div class="form-step hidden" id="step-3">
+                    <h3>Étape 3: Impact potentiel</h3>
+                    
+                    <div class="form-group">
+                        <label for="affected-persons">Nombre approximatif de personnes concernées :</label>
+                        <input type="number" id="affected-persons" name="affected-persons" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="impact-level">Niveau d'impact potentiel sur les personnes concernées :</label>
+                        <select id="impact-level" name="impact-level" required>
+                            <option value="">-- Sélectionnez --</option>
+                            <option value="minimal">Minimal (pas de conséquences significatives)</option>
+                            <option value="limited">Limité (quelques inconvénients surmontables)</option>
+                            <option value="significant">Significatif (inconvénients importants mais surmontables)</option>
+                            <option value="severe">Sévère (conséquences significatives et durables)</option>
+                            <option value="critical">Critique (conséquences irréversibles/catastrophiques)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="impact-description">Description des conséquences potentielles pour les personnes concernées :</label>
+                        <textarea id="impact-description" name="impact-description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev">Précédent</button>
+                        <button type="button" class="btn-next">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 4: Mesures prises -->
+                <div class="form-step hidden" id="step-4">
+                    <h3>Étape 4: Mesures prises</h3>
+                    
+                    <div class="form-group">
+                        <label for="measures-taken">Mesures déjà prises pour remédier à la violation :</label>
+                        <textarea id="measures-taken" name="measures-taken" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="planned-measures">Mesures prévues pour éviter que cela ne se reproduise :</label>
+                        <textarea id="planned-measures" name="planned-measures" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <p>Les personnes concernées ont-elles été informées de cette violation ?</p>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="informed-yes" name="persons-informed" value="yes" required>
+                                <label for="informed-yes">Oui</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="informed-no" name="persons-informed" value="no">
+                                <label for="informed-no">Non</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="informed-planned" name="persons-informed" value="planned">
+                                <label for="informed-planned">Planifié</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group informed-details hidden">
+                        <label for="informed-date">Date de l'information :</label>
+                        <input type="date" id="informed-date" name="informed-date">
+                    </div>
+                    
+                    <div class="form-group planned-inform-details hidden">
+                        <label for="planned-informed-date">Date prévue pour l'information :</label>
+                        <input type="date" id="planned-informed-date" name="planned-informed-date">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev">Précédent</button>
+                        <button type="submit" class="btn-evaluate">Évaluer</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section id="evaluation-result" class="hidden">
+            <div id="notification-required" class="result-panel hidden">
+                <div class="result-header notification-required">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>Notification à l'APD requise</h2>
+                </div>
+                <div class="result-content">
+                    <p>Selon les informations fournies, vous êtes dans l'obligation de notifier cette violation de données à l'Autorité de Protection des Données.</p>
+                    <div id="notification-reasons"></div>
+                    <h3>Articles du RGPD applicables :</h3>
+                    <div id="applicable-articles"></div>
+                    <h3>Délai :</h3>
+                    <p>La notification doit être effectuée dans les <strong>72 heures</strong> suivant la découverte de la violation.</p>
+                    <div class="deadline-info"></div>
+                    <h3>Prochaines étapes :</h3>
+                    <ol id="next-steps-required"></ol>
+                    <button id="generate-notification" class="btn-primary">Générer le document de notification</button>
+                </div>
+            </div>
+
+            <div id="notification-not-required" class="result-panel hidden">
+                <div class="result-header notification-not-required">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Notification à l'APD non requise</h2>
+                </div>
+                <div class="result-content">
+                    <p>Selon les informations fournies, vous n'êtes pas dans l'obligation de notifier cette violation de données à l'Autorité de Protection des Données.</p>
+                    <div id="non-notification-reasons"></div>
+                    <h3>Justification :</h3>
+                    <div id="justification"></div>
+                    <h3>Cependant, vous devez :</h3>
+                    <ol id="next-steps-not-required"></ol>
+                    <button id="generate-documentation" class="btn-secondary">Générer la documentation interne</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="document-preview" class="hidden">
+            <h2>Document de notification</h2>
+            <div id="document-content"></div>
+            <div class="document-actions">
+                <button id="edit-evaluation" class="btn-secondary">Modifier l'évaluation</button>
+                <button id="download-document" class="btn-primary">Télécharger le document</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Outil d'Évaluation d'Impact RGPD | <a href="https://github.com/servais1983/rgpd-impact-evaluation-tool" target="_blank">GitHub</a></p>
+            <p class="disclaimer">Cet outil est fourni à titre informatif et ne remplace pas un avis juridique professionnel.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/rgpd-rules.js"></script>
+    <script src="js/document-generator.js"></script>
+</body>
+</html>
