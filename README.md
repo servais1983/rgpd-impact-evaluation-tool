@@ -10,11 +10,7 @@ Application web qui aide à déterminer si une notification à l'Autorité de Pr
 - 🛤️ **Guide étape par étape** pour la gestion d'incidents liés aux données personnelles
 - 📋 **Recommandations personnalisées** selon le type de violation et les données concernées
 
-## Captures d'écran
 
-![Écran d'accueil](https://via.placeholder.com/800x450.png?text=Écran+d'accueil)
-![Formulaire d'évaluation](https://via.placeholder.com/800x450.png?text=Formulaire+d'évaluation)
-![Résultats d'analyse](https://via.placeholder.com/800x450.png?text=Résultats+d'analyse)
 
 ## Installation et exécution
 
@@ -22,7 +18,8 @@ Application web qui aide à déterminer si une notification à l'Autorité de Pr
 
 1. Clonez le dépôt :
 ```bash
-git clone https://github.com/servais1983/rgpd-impact-evaluation-tool.git
+git clone 
+https://github.com/servais1983/rgpd-impact-evaluation-tool.git
 ```
 
 2. Ouvrez le fichier `index.html` dans votre navigateur web.
@@ -33,7 +30,8 @@ Si vous souhaitez utiliser un serveur local pour le développement :
 
 1. Clonez le dépôt :
 ```bash
-git clone https://github.com/servais1983/rgpd-impact-evaluation-tool.git
+git clone 
+https://github.com/servais1983/rgpd-impact-evaluation-tool.git
 ```
 
 2. Naviguez dans le répertoire :
