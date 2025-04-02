@@ -11,8 +11,8 @@
     <!-- Sélecteur de langue -->
     <div class="language-toggle">
         <select id="language-toggle" onchange="changeLanguage(this.value)">
-            <option value="fr">Français</option>
-            <option value="en">English</option>
+            <option value="fr" data-i18n="language-fr">Français</option>
+            <option value="en" data-i18n="language-en">English</option>
         </select>
     </div>
 
@@ -30,8 +30,74 @@
             <button id="start-evaluation" class="btn-primary" data-i18n="start-evaluation">Commencer l'évaluation</button>
         </section>
 
-        <!-- Les autres sections de votre HTML existant gardent leur structure, 
-             mais les éléments textuels reçoivent l'attribut data-i18n -->
+        <section id="evaluation-form" class="hidden">
+            <form id="data-breach-form">
+                <!-- Étape 1 -->
+                <div class="form-step" id="step-1">
+                    <h3 data-i18n="step-1-title">Étape 1: Informations générales sur l'incident</h3>
+                    
+                    <div class="form-group">
+                        <label for="breach-date" data-i18n="breach-date-label">Date de découverte de la violation :</label>
+                        <input type="date" id="breach-date" name="breach-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="breach-type" data-i18n="breach-type-label">Type de violation :</label>
+                        <select id="breach-type" name="breach-type" required>
+                            <option value="" data-i18n="breach-type-placeholder">-- Sélectionnez --</option>
+                            <option value="unauthorized-access" data-i18n="breach-type-unauthorized-access">Accès non autorisé</option>
+                            <option value="theft" data-i18n="breach-type-theft">Vol de données</option>
+                            <option value="data-loss" data-i18n="breach-type-data-loss">Perte de données</option>
+                            <option value="data-alteration" data-i18n="breach-type-data-alteration">Altération de données</option>
+                            <option value="disclosure" data-i18n="breach-type-disclosure">Divulgation non autorisée</option>
+                            <option value="ransomware" data-i18n="breach-type-ransomware">Attaque par rançongiciel</option>
+                            <option value="ddos" data-i18n="breach-type-ddos">Attaque par déni de service</option>
+                            <option value="supply_chain" data-i18n="breach-type-supply-chain">Incident dans la chaîne d'approvisionnement</option>
+                            <option value="other" data-i18n="breach-type-other">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="breach-description" data-i18n="breach-description-label">Description de l'incident :</label>
+                        <textarea id="breach-description" name="breach-description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-next" data-i18n="btn-next">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 2 -->
+                <div class="form-step hidden" id="step-2">
+                    <h3 data-i18n="step-2-title">Étape 2: Types de données concernées</h3>
+                    
+                    <div class="form-group">
+                        <p data-i18n="data-types-question">Quels types de données personnelles ont été affectés ? (Cochez toutes les réponses applicables)</p>
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-identification" name="data-types" value="identification">
+                                <label for="data-identification" data-i18n="data-type-identification">Données d'identification (nom, prénom, adresse)</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-contact" name="data-types" value="contact">
+                                <label for="data-contact" data-i18n="data-type-contact">Coordonnées de contact (email, téléphone)</label>
+                            </div>
+                            
+                            <!-- Autres types de données avec data-i18n -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev" data-i18n="btn-prev">Précédent</button>
+                        <button type="button" class="btn-next" data-i18n="btn-next">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- D'autres étapes suivront le même modèle -->
+            </form>
+        </section>
     </main>
 
     <footer>
