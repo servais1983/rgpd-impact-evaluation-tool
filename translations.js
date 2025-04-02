@@ -9,7 +9,48 @@ const translations = {
         // Section d'introduction
         "intro-title": "Évaluation de l'impact d'une violation de données",
         "intro-description": "Cet outil vous aide à déterminer vos obligations réglementaires (RGPD, DORA, NIS2) en cas de violation de données personnelles, et vous guide dans la préparation des documents nécessaires selon votre secteur et la taille de votre entreprise.",
-        "start-evaluation": "Commencer l'évaluation",
+        
+        // Sélecteur de langue
+        "language-fr": "Français",
+        "language-en": "English",
+        
+        // Nouvelles options d'évaluation
+        "choose-evaluation-type": "Choisissez votre type d'évaluation :",
+        "full-evaluation-title": "Évaluation complète",
+        "full-evaluation-desc": "Analysez l'incident de violation de données et obtenez une évaluation détaillée de vos obligations.",
+        "data-breach-title": "Données volées ou consultées",
+        "data-breach-desc": "Évaluez rapidement vos obligations selon le type de données compromises.",
+        "company-size-title": "Par taille d'entreprise",
+        "company-size-desc": "Consultez les obligations réglementaires selon la taille et le secteur de votre entreprise.",
+        "start-full-evaluation": "Commencer l'évaluation",
+        "start-data-breach-evaluation": "Évaluer l'impact",
+        "start-company-size-evaluation": "Vérifier les obligations",
+        
+        // Évaluation rapide des données
+        "quick-eval-title": "Évaluation rapide - Données compromises",
+        "quick-eval-desc": "Sélectionnez les types de données qui ont été compromises pour obtenir une évaluation rapide de vos obligations.",
+        "data-type-sensitive": "Données sensibles (santé, biométriques, génétiques, orientation sexuelle, etc.)",
+        "btn-evaluate-quick": "Évaluer maintenant",
+        
+        // Évaluation par taille d'entreprise
+        "company-eval-title": "Évaluation par taille d'entreprise et secteur",
+        "company-eval-desc": "Indiquez la taille de votre entreprise et votre secteur d'activité pour connaître vos obligations réglementaires.",
+        "company-size-label": "Taille de l'entreprise :",
+        "company-size-placeholder": "-- Sélectionnez --",
+        "company-size-micro": "Micro-entreprise (moins de 10 employés)",
+        "company-size-small": "Petite entreprise (10 à 49 employés)",
+        "company-size-medium": "Moyenne entreprise (50 à 249 employés)",
+        "company-size-large": "Grande entreprise (250 employés et plus)",
+        "company-sector-label": "Secteur d'activité principal :",
+        "company-sector-placeholder": "-- Sélectionnez --",
+        "sector-dora-group": "Secteurs financiers (DORA)",
+        "sector-nis2-essential-group": "Entités essentielles (NIS2)",
+        "sector-nis2-important-group": "Entités importantes (NIS2)",
+        "sector-other-group": "Autres secteurs",
+        "sector-retail": "Commerce de détail",
+        "sector-education": "Éducation",
+        "sector-other-option": "Autre",
+        "btn-evaluate-company": "Vérifier les obligations",
         
         // Étapes du formulaire
         "step-1-title": "Étape 1: Informations générales sur l'incident",
@@ -49,20 +90,8 @@ const translations = {
         "data-type-other": "Autres types de données",
         "data-type-other-description-label": "Précisez les autres types de données :",
         
-        // Étape 3: Impact potentiel
-        "step-3-title": "Étape 3: Impact potentiel",
-        "affected-persons-label": "Nombre approximatif de personnes concernées :",
-        "impact-level-label": "Niveau d'impact potentiel sur les personnes concernées :",
-        "impact-level-placeholder": "-- Sélectionnez --",
-        "impact-level-minimal": "Minimal (pas de conséquences significatives)",
-        "impact-level-limited": "Limité (quelques inconvénients surmontables)",
-        "impact-level-significant": "Significatif (inconvénients importants mais surmontables)",
-        "impact-level-severe": "Sévère (conséquences significatives et durables)",
-        "impact-level-critical": "Critique (conséquences irréversibles/catastrophiques)",
-        "impact-description-label": "Description des conséquences potentielles pour les personnes concernées :",
-        
-        // Étape 4: Informations sur l'entreprise
-        "step-4-title": "Étape 4: Informations sur votre organisation",
+        // Étape 3: Informations sur l'entreprise
+        "step-3-title": "Étape 3: Informations sur votre organisation",
         "employee-count-label": "Nombre d'employés :",
         "annual-revenue-label": "Chiffre d'affaires annuel (en euros) :",
         "sector-types-label": "Secteur d'activité (cochez tous ceux qui s'appliquent) :",
@@ -96,45 +125,166 @@ const translations = {
         "sector-other": "Autre secteur d'activité",
         "sector-other-description-label": "Précisez votre secteur d'activité :",
         
-        // Étape 5: Mesures prises
-        "step-5-title": "Étape 5: Mesures prises",
-        "measures-taken-label": "Mesures déjà prises pour remédier à la violation :",
-        "planned-measures-label": "Mesures prévues pour éviter que cela ne se reproduise :",
-        "persons-informed-question": "Les personnes concernées ont-elles été informées de cette violation ?",
-        "persons-informed-yes": "Oui",
-        "persons-informed-no": "Non",
-        "persons-informed-planned": "Planifié",
-        "informed-date-label": "Date de l'information :",
-        "planned-informed-date-label": "Date prévue pour l'information :",
-        
         // Boutons
         "btn-next": "Suivant",
         "btn-prev": "Précédent",
         "btn-evaluate": "Évaluer",
-        "btn-generate-notification": "Générer le document de notification",
-        "btn-generate-documentation": "Générer la documentation interne",
-        "btn-edit-evaluation": "Modifier l'évaluation",
-        "btn-download-document": "Télécharger le document",
+        "btn-back": "Retour",
+        "btn-back-to-home": "Retour à l'accueil",
+        "btn-download-report": "Télécharger le rapport",
         
         // Résultats
-        "notification-required-title": "Notification à l'APD requise",
-        "notification-not-required-title": "Notification à l'APD non requise",
+        "results-title": "Résultats de l'évaluation",
+        "notification-required-title": "Notification à l'autorité de contrôle requise",
+        "notification-not-required-title": "Notification à l'autorité de contrôle non requise",
+        "notification-dora-title": "Obligations DORA applicables",
+        "notification-nis2-title": "Obligations NIS2 applicables",
         
         // Pied de page
         "footer-copyright": "© 2025 Outil d'Évaluation d'Impact Réglementaire",
         "footer-disclaimer": "Cet outil est fourni à titre informatif et ne remplace pas un avis juridique professionnel."
     },
     en: {
-        // Equivalent translations in English would follow a similar structure
+        // Titres et en-têtes
         "title": "GDPR, DORA and NIS2 Impact Assessment Tool",
         "main-title": "Regulatory Impact Assessment Tool",
         "main-subtitle": "Assess your obligations under GDPR, DORA and NIS2 following a data breach",
         
-        // ... (traduire tous les éléments de la même manière)
+        // Section d'introduction
+        "intro-title": "Data Breach Impact Assessment",
+        "intro-description": "This tool helps you determine your regulatory obligations (GDPR, DORA, NIS2) in case of a personal data breach, and guides you in preparing the necessary documents according to your sector and company size.",
         
-        "start-evaluation": "Start Evaluation",
+        // Sélecteur de langue
+        "language-fr": "Français",
+        "language-en": "English",
         
-        // Traductions spécifiques pour l'anglais
+        // Nouvelles options d'évaluation
+        "choose-evaluation-type": "Choose your evaluation type:",
+        "full-evaluation-title": "Complete Assessment",
+        "full-evaluation-desc": "Analyze the data breach incident and get a detailed assessment of your obligations.",
+        "data-breach-title": "Stolen or Accessed Data",
+        "data-breach-desc": "Quickly assess your obligations based on the type of compromised data.",
+        "company-size-title": "By Company Size",
+        "company-size-desc": "Check regulatory obligations according to your company size and sector.",
+        "start-full-evaluation": "Start Assessment",
+        "start-data-breach-evaluation": "Assess Impact",
+        "start-company-size-evaluation": "Check Obligations",
+        
+        // Évaluation rapide des données
+        "quick-eval-title": "Quick Assessment - Compromised Data",
+        "quick-eval-desc": "Select the types of data that have been compromised to get a quick assessment of your obligations.",
+        "data-type-sensitive": "Sensitive data (health, biometric, genetic, sexual orientation, etc.)",
+        "btn-evaluate-quick": "Assess Now",
+        
+        // Évaluation par taille d'entreprise
+        "company-eval-title": "Assessment by Company Size and Sector",
+        "company-eval-desc": "Indicate your company size and business sector to know your regulatory obligations.",
+        "company-size-label": "Company size:",
+        "company-size-placeholder": "-- Select --",
+        "company-size-micro": "Micro-enterprise (less than 10 employees)",
+        "company-size-small": "Small enterprise (10 to 49 employees)",
+        "company-size-medium": "Medium enterprise (50 to 249 employees)",
+        "company-size-large": "Large enterprise (250+ employees)",
+        "company-sector-label": "Main business sector:",
+        "company-sector-placeholder": "-- Select --",
+        "sector-dora-group": "Financial Sectors (DORA)",
+        "sector-nis2-essential-group": "Essential Entities (NIS2)",
+        "sector-nis2-important-group": "Important Entities (NIS2)",
+        "sector-other-group": "Other Sectors",
+        "sector-retail": "Retail",
+        "sector-education": "Education",
+        "sector-other-option": "Other",
+        "btn-evaluate-company": "Check Obligations",
+        
+        // Étapes du formulaire
+        "step-1-title": "Step 1: General Information About the Incident",
+        "breach-date-label": "Date of breach discovery:",
+        "breach-type-label": "Type of breach:",
+        "breach-type-placeholder": "-- Select --",
+        "breach-description-label": "Description of the incident:",
+        
+        // Types de violations
+        "breach-type-unauthorized-access": "Unauthorized access",
+        "breach-type-theft": "Data theft",
+        "breach-type-data-loss": "Data loss",
+        "breach-type-data-alteration": "Data alteration",
+        "breach-type-disclosure": "Unauthorized disclosure",
+        "breach-type-ransomware": "Ransomware attack",
+        "breach-type-ddos": "DDoS attack",
+        "breach-type-supply-chain": "Supply chain incident",
+        "breach-type-other": "Other",
+        
+        // Étape 2: Types de données
+        "step-2-title": "Step 2: Types of Data Affected",
+        "data-types-question": "What types of personal data were affected? (Check all that apply)",
+        
+        // Types de données
+        "data-type-identification": "Identification data (name, surname, address)",
+        "data-type-contact": "Contact details (email, phone)",
+        "data-type-financial": "Financial data (bank details, card numbers)",
+        "data-type-authentication": "IDs and passwords",
+        "data-type-official": "Official ID documents (passport, ID card, etc.)",
+        "data-type-health": "Health data",
+        "data-type-biometric": "Biometric data",
+        "data-type-genetic": "Genetic data",
+        "data-type-sexual": "Sexual orientation, sex life",
+        "data-type-criminal": "Criminal convictions, offenses",
+        "data-type-political": "Political opinions, religious or philosophical beliefs",
+        "data-type-racial": "Racial or ethnic origin",
+        "data-type-other": "Other types of data",
+        "data-type-other-description-label": "Please specify other data types:",
+        
+        // Étape 3: Informations sur l'entreprise
+        "step-3-title": "Step 3: Information About Your Organization",
+        "employee-count-label": "Number of employees:",
+        "annual-revenue-label": "Annual revenue (in euros):",
+        "sector-types-label": "Business sector (check all that apply):",
+        
+        // Secteurs DORA et NIS2
+        "sector-financial-institutions": "Financial Entities (DORA)",
+        "sector-financial-institution": "Financial institution (bank, credit institution)",
+        "sector-investment-firm": "Investment firm",
+        "sector-insurance": "Insurance company",
+        "sector-payment": "Payment service",
+        "sector-crypto": "Crypto-asset service provider",
+        "sector-ict": "ICT service provider for the financial sector",
+        
+        "sector-nis2-essential": "Essential Entities (NIS2)",
+        "sector-energy": "Energy (electricity, gas, oil)",
+        "sector-transport": "Transport (air, rail, maritime, road)",
+        "sector-banking": "Banking (credit institutions)",
+        "sector-healthcare": "Healthcare (hospitals, laboratories, medical manufacturers)",
+        "sector-water": "Drinking water (production, distribution, treatment)",
+        "sector-digital-infra": "Digital infrastructure (DNS, TLD, cloud)",
+        "sector-public-admin": "Public administration",
+        "sector-space": "Space (space infrastructures)",
+        
+        "sector-nis2-important": "Important Entities (NIS2)",
+        "sector-postal": "Postal and delivery services",
+        "sector-waste": "Waste management",
+        "sector-manufacturing": "Manufacturing (medical devices, chemicals, etc.)",
+        "sector-digital-providers": "Digital providers (marketplaces, search engines)",
+        "sector-research": "Research and higher education",
+        
+        "sector-other": "Other business sector",
+        "sector-other-description-label": "Please specify your business sector:",
+        
+        // Boutons
+        "btn-next": "Next",
+        "btn-prev": "Previous",
+        "btn-evaluate": "Evaluate",
+        "btn-back": "Back",
+        "btn-back-to-home": "Back to Home",
+        "btn-download-report": "Download Report",
+        
+        // Résultats
+        "results-title": "Assessment Results",
+        "notification-required-title": "Notification to the supervisory authority required",
+        "notification-not-required-title": "Notification to the supervisory authority not required",
+        "notification-dora-title": "DORA obligations applicable",
+        "notification-nis2-title": "NIS2 obligations applicable",
+        
+        // Pied de page
         "footer-copyright": "© 2025 Regulatory Impact Assessment Tool",
         "footer-disclaimer": "This tool is provided for informational purposes and does not replace professional legal advice."
     }
@@ -167,6 +317,26 @@ function changeLanguage(lang) {
         if (labelEl) {
             labelEl.textContent = translate(key, lang);
         }
+    });
+    
+    // Mise à jour des attributs data-i18n dans les options des select
+    document.querySelectorAll('option[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = translate(key, lang);
+    });
+    
+    // Mise à jour des attributs data-i18n dans les optgroup
+    document.querySelectorAll('optgroup[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.label = translate(key, lang);
+    });
+    
+    // Animation subtile pour indiquer le changement
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        element.classList.add('language-changing');
+        setTimeout(() => {
+            element.classList.remove('language-changing');
+        }, 300);
     });
 }
 
