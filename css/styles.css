@@ -11,6 +11,8 @@
     --border-radius: 5px;
     --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
+    --dora-color: #9b59b6;
+    --nis2-color: #16a085;
 }
 
 /* Base styles */
@@ -304,6 +306,161 @@ textarea:focus {
     margin-top: 2rem;
 }
 
+/* DORA and NIS2 specific styles */
+.regulation-card {
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+}
+
+.regulation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.regulation-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.regulation-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+}
+
+.tag-rgpd {
+    background-color: var(--secondary-color);
+}
+
+.tag-dora {
+    background-color: var(--dora-color);
+}
+
+.tag-nis2 {
+    background-color: var(--nis2-color);
+}
+
+.regulation-status {
+    font-weight: 500;
+}
+
+.status-applicable {
+    color: var(--success-color);
+}
+
+.status-not-applicable {
+    color: var(--accent-color);
+}
+
+.regulation-details {
+    margin-top: 0.5rem;
+}
+
+.deadline-badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    margin-right: 0.5rem;
+    color: white;
+}
+
+.deadline-rgpd {
+    background-color: var(--secondary-color);
+}
+
+.deadline-dora {
+    background-color: var(--dora-color);
+}
+
+.deadline-nis2 {
+    background-color: var(--nis2-color);
+}
+
+.requirements-list {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.requirements-list li {
+    margin-bottom: 0.5rem;
+}
+
+.regulations-summary {
+    background-color: var(--light-bg);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: var(--border-radius);
+}
+
+/* Company Information */
+.company-info-card {
+    padding: 1rem;
+    background-color: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    margin-bottom: 1.5rem;
+}
+
+.regulation-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.tab:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.tab.active {
+    border-bottom: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+/* Theft specific recommendations */
+.theft-recommendations {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.theft-recommendations h4 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.theft-recommendations ul {
+    padding-left: 1.5rem;
+}
+
+.theft-recommendations li {
+    margin-bottom: 0.5rem;
+}
+
 /* Footer */
 footer {
     background-color: var(--primary-color);
@@ -358,4 +515,69 @@ footer a:hover {
         text-align: center;
         gap: 0.5rem;
     }
+    
+    .regulation-tabs {
+        overflow-x: auto;
+    }
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--secondary-color);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--secondary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.toggle-label {
+    font-weight: 500;
 }
