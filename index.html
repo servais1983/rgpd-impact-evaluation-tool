@@ -27,9 +27,38 @@
         <section id="intro">
             <h2 data-i18n="intro-title">Évaluation de l'impact d'une violation de données</h2>
             <p data-i18n="intro-description">Cet outil vous aide à déterminer vos obligations réglementaires (RGPD, DORA, NIS2) en cas de violation de données personnelles, et vous guide dans la préparation des documents nécessaires selon votre secteur et la taille de votre entreprise.</p>
-            <button id="start-evaluation" class="btn-primary" data-i18n="start-evaluation">Commencer l'évaluation</button>
+            
+            <!-- Nouvelles options d'évaluation -->
+            <div class="evaluation-options">
+                <h3 data-i18n="choose-evaluation-type">Choisissez votre type d'évaluation :</h3>
+                
+                <!-- Option 1: Évaluation complète -->
+                <div class="evaluation-card" id="full-evaluation">
+                    <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h4 data-i18n="full-evaluation-title">Évaluation complète</h4>
+                    <p data-i18n="full-evaluation-desc">Analysez l'incident de violation de données et obtenez une évaluation détaillée de vos obligations.</p>
+                    <button class="btn-primary" data-action="start-full-evaluation" data-i18n="start-full-evaluation">Commencer l'évaluation</button>
+                </div>
+                
+                <!-- Option 2: Évaluation pour données volées ou consultées -->
+                <div class="evaluation-card" id="data-breach-evaluation">
+                    <div class="card-icon"><i class="fas fa-user-secret"></i></div>
+                    <h4 data-i18n="data-breach-title">Données volées ou consultées</h4>
+                    <p data-i18n="data-breach-desc">Évaluez rapidement vos obligations selon le type de données compromises.</p>
+                    <button class="btn-primary" data-action="start-data-breach-evaluation" data-i18n="start-data-breach-evaluation">Évaluer l'impact</button>
+                </div>
+                
+                <!-- Option 3: Vérification par taille d'entreprise -->
+                <div class="evaluation-card" id="company-size-evaluation">
+                    <div class="card-icon"><i class="fas fa-building"></i></div>
+                    <h4 data-i18n="company-size-title">Par taille d'entreprise</h4>
+                    <p data-i18n="company-size-desc">Consultez les obligations réglementaires selon la taille et le secteur de votre entreprise.</p>
+                    <button class="btn-primary" data-action="start-company-size-evaluation" data-i18n="start-company-size-evaluation">Vérifier les obligations</button>
+                </div>
+            </div>
         </section>
 
+        <!-- Formulaire d'évaluation original (caché par défaut) -->
         <section id="evaluation-form" class="hidden">
             <form id="data-breach-form">
                 <!-- Étape 1 -->
@@ -86,6 +115,55 @@
                             </div>
                             
                             <!-- Autres types de données avec data-i18n -->
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-financial" name="data-types" value="financial">
+                                <label for="data-financial" data-i18n="data-type-financial">Données financières (coordonnées bancaires, numéros de carte)</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-authentication" name="data-types" value="authentication">
+                                <label for="data-authentication" data-i18n="data-type-authentication">Identifiants et mots de passe</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-official" name="data-types" value="official">
+                                <label for="data-official" data-i18n="data-type-official">Documents d'identité officiels (passeport, CNI, etc.)</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-health" name="data-types" value="health">
+                                <label for="data-health" data-i18n="data-type-health">Données de santé</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-biometric" name="data-types" value="biometric">
+                                <label for="data-biometric" data-i18n="data-type-biometric">Données biométriques</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-genetic" name="data-types" value="genetic">
+                                <label for="data-genetic" data-i18n="data-type-genetic">Données génétiques</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-sexual" name="data-types" value="sexual">
+                                <label for="data-sexual" data-i18n="data-type-sexual">Orientation sexuelle, vie sexuelle</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-criminal" name="data-types" value="criminal">
+                                <label for="data-criminal" data-i18n="data-type-criminal">Condamnations pénales, infractions</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-political" name="data-types" value="political">
+                                <label for="data-political" data-i18n="data-type-political">Opinions politiques, convictions religieuses ou philosophiques</label>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="data-racial" name="data-types" value="racial">
+                                <label for="data-racial" data-i18n="data-type-racial">Origine raciale ou ethnique</label>
+                            </div>
                         </div>
                     </div>
                     
@@ -95,8 +173,239 @@
                     </div>
                 </div>
 
-                <!-- D'autres étapes suivront le même modèle -->
+                <!-- Nouvelles étapes pour les informations sur l'entreprise -->
+                <div class="form-step hidden" id="step-3">
+                    <h3 data-i18n="step-3-title">Étape 3: Informations sur votre organisation</h3>
+                    
+                    <div class="form-group">
+                        <label for="employee-count" data-i18n="employee-count-label">Nombre d'employés :</label>
+                        <input type="number" id="employee-count" name="employee-count" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="annual-revenue" data-i18n="annual-revenue-label">Chiffre d'affaires annuel (en euros) :</label>
+                        <input type="number" id="annual-revenue" name="annual-revenue" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-i18n="sector-types-label">Secteur d'activité (cochez tous ceux qui s'appliquent) :</label>
+                        
+                        <div class="sector-groups">
+                            <!-- Secteurs DORA -->
+                            <div class="sector-group">
+                                <h4 data-i18n="sector-financial-institutions">Entités financières (DORA)</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-financial-institution" name="entity-types" value="financial_institution">
+                                    <label for="sector-financial-institution" data-i18n="sector-financial-institution">Institution financière (banque, établissement de crédit)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-investment-firm" name="entity-types" value="investment_firm">
+                                    <label for="sector-investment-firm" data-i18n="sector-investment-firm">Entreprise d'investissement</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-insurance" name="entity-types" value="insurance_company">
+                                    <label for="sector-insurance" data-i18n="sector-insurance">Compagnie d'assurance</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-payment" name="entity-types" value="payment_service">
+                                    <label for="sector-payment" data-i18n="sector-payment">Service de paiement</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-crypto" name="entity-types" value="crypto_asset_provider">
+                                    <label for="sector-crypto" data-i18n="sector-crypto">Prestataire de services sur crypto-actifs</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-ict" name="entity-types" value="ict_service_provider">
+                                    <label for="sector-ict" data-i18n="sector-ict">Prestataire de services TIC pour le secteur financier</label>
+                                </div>
+                            </div>
+                            
+                            <!-- Secteurs NIS2 (entités essentielles) -->
+                            <div class="sector-group">
+                                <h4 data-i18n="sector-nis2-essential">Entités essentielles (NIS2)</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-energy" name="entity-types" value="energy">
+                                    <label for="sector-energy" data-i18n="sector-energy">Énergie (électricité, gaz, pétrole)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-transport" name="entity-types" value="transport">
+                                    <label for="sector-transport" data-i18n="sector-transport">Transport (aérien, ferroviaire, maritime, routier)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-banking" name="entity-types" value="banking">
+                                    <label for="sector-banking" data-i18n="sector-banking">Banque (établissements de crédit)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-healthcare" name="entity-types" value="healthcare">
+                                    <label for="sector-healthcare" data-i18n="sector-healthcare">Santé (hôpitaux, laboratoires, fabricants médicaux)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-water" name="entity-types" value="drinking_water">
+                                    <label for="sector-water" data-i18n="sector-water">Eau potable (production, distribution, traitement)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-digital-infra" name="entity-types" value="digital_infrastructure">
+                                    <label for="sector-digital-infra" data-i18n="sector-digital-infra">Infrastructure numérique (DNS, TLD, cloud)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-public-admin" name="entity-types" value="public_administration">
+                                    <label for="sector-public-admin" data-i18n="sector-public-admin">Administration publique</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-space" name="entity-types" value="space">
+                                    <label for="sector-space" data-i18n="sector-space">Espace (infrastructures spatiales)</label>
+                                </div>
+                            </div>
+                            
+                            <!-- Secteurs NIS2 (entités importantes) -->
+                            <div class="sector-group">
+                                <h4 data-i18n="sector-nis2-important">Entités importantes (NIS2)</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-postal" name="entity-types" value="postal_services">
+                                    <label for="sector-postal" data-i18n="sector-postal">Services postaux et de livraison</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-waste" name="entity-types" value="waste_management">
+                                    <label for="sector-waste" data-i18n="sector-waste">Gestion des déchets</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-manufacturing" name="entity-types" value="manufacturing">
+                                    <label for="sector-manufacturing" data-i18n="sector-manufacturing">Fabrication (dispositifs médicaux, produits chimiques, etc.)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-digital-providers" name="entity-types" value="digital_providers">
+                                    <label for="sector-digital-providers" data-i18n="sector-digital-providers">Fournisseurs numériques (places de marché, moteurs de recherche)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sector-research" name="entity-types" value="research">
+                                    <label for="sector-research" data-i18n="sector-research">Recherche et enseignement supérieur</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev" data-i18n="btn-prev">Précédent</button>
+                        <button type="button" class="btn-evaluate" data-i18n="btn-evaluate">Évaluer</button>
+                    </div>
+                </div>
             </form>
+        </section>
+
+        <!-- Formulaire d'évaluation simplifiée pour les données volées/consultées -->
+        <section id="data-breach-quick-form" class="hidden">
+            <h3 data-i18n="quick-eval-title">Évaluation rapide - Données compromises</h3>
+            <p data-i18n="quick-eval-desc">Sélectionnez les types de données qui ont été compromises pour obtenir une évaluation rapide de vos obligations.</p>
+            
+            <form id="quick-data-breach-form">
+                <div class="checkbox-group vertical">
+                    <!-- Types de données à sélectionner -->
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="quick-data-identification" name="quick-data-types" value="identification">
+                        <label for="quick-data-identification" data-i18n="data-type-identification">Données d'identification (nom, prénom, adresse)</label>
+                    </div>
+                    
+                    <!-- Mêmes options que dans le formulaire principal -->
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="quick-data-contact" name="quick-data-types" value="contact">
+                        <label for="quick-data-contact" data-i18n="data-type-contact">Coordonnées de contact (email, téléphone)</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="quick-data-financial" name="quick-data-types" value="financial">
+                        <label for="quick-data-financial" data-i18n="data-type-financial">Données financières (coordonnées bancaires, numéros de carte)</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="quick-data-authentication" name="quick-data-types" value="authentication">
+                        <label for="quick-data-authentication" data-i18n="data-type-authentication">Identifiants et mots de passe</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="quick-data-official" name="quick-data-types" value="official">
+                        <label for="quick-data-official" data-i18n="data-type-official">Documents d'identité officiels (passeport, CNI, etc.)</label>
+                    </div>
+                    
+                    <!-- Données sensibles -->
+                    <div class="checkbox-item sensitive-data">
+                        <input type="checkbox" id="quick-data-sensitive" name="quick-data-types" value="sensitive">
+                        <label for="quick-data-sensitive" data-i18n="data-type-sensitive">Données sensibles (santé, biométriques, génétiques, orientation sexuelle, etc.)</label>
+                    </div>
+                </div>
+                
+                <div class="form-actions centered">
+                    <button type="button" class="btn-back" data-i18n="btn-back">Retour</button>
+                    <button type="button" class="btn-evaluate-quick" data-i18n="btn-evaluate-quick">Évaluer maintenant</button>
+                </div>
+            </form>
+        </section>
+        
+        <!-- Formulaire d'évaluation par taille d'entreprise -->
+        <section id="company-size-form" class="hidden">
+            <h3 data-i18n="company-eval-title">Évaluation par taille d'entreprise et secteur</h3>
+            <p data-i18n="company-eval-desc">Indiquez la taille de votre entreprise et votre secteur d'activité pour connaître vos obligations réglementaires.</p>
+            
+            <form id="company-size-eval-form">
+                <div class="form-group">
+                    <label for="company-size" data-i18n="company-size-label">Taille de l'entreprise :</label>
+                    <select id="company-size" name="company-size" required>
+                        <option value="" data-i18n="company-size-placeholder">-- Sélectionnez --</option>
+                        <option value="micro" data-i18n="company-size-micro">Micro-entreprise (moins de 10 employés)</option>
+                        <option value="small" data-i18n="company-size-small">Petite entreprise (10 à 49 employés)</option>
+                        <option value="medium" data-i18n="company-size-medium">Moyenne entreprise (50 à 249 employés)</option>
+                        <option value="large" data-i18n="company-size-large">Grande entreprise (250 employés et plus)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company-sector" data-i18n="company-sector-label">Secteur d'activité principal :</label>
+                    <select id="company-sector" name="company-sector" required>
+                        <option value="" data-i18n="company-sector-placeholder">-- Sélectionnez --</option>
+                        <optgroup label="Secteurs financiers (DORA)" data-i18n="sector-dora-group">
+                            <option value="financial_institution" data-i18n="sector-financial-institution">Institution financière (banque, établissement de crédit)</option>
+                            <option value="investment_firm" data-i18n="sector-investment-firm">Entreprise d'investissement</option>
+                            <option value="insurance_company" data-i18n="sector-insurance">Compagnie d'assurance</option>
+                            <option value="payment_service" data-i18n="sector-payment">Service de paiement</option>
+                            <option value="crypto_asset_provider" data-i18n="sector-crypto">Prestataire de services sur crypto-actifs</option>
+                        </optgroup>
+                        <optgroup label="Entités essentielles (NIS2)" data-i18n="sector-nis2-essential-group">
+                            <option value="energy" data-i18n="sector-energy">Énergie (électricité, gaz, pétrole)</option>
+                            <option value="transport" data-i18n="sector-transport">Transport (aérien, ferroviaire, maritime, routier)</option>
+                            <option value="healthcare" data-i18n="sector-healthcare">Santé (hôpitaux, laboratoires, fabricants médicaux)</option>
+                            <option value="public_administration" data-i18n="sector-public-admin">Administration publique</option>
+                        </optgroup>
+                        <optgroup label="Entités importantes (NIS2)" data-i18n="sector-nis2-important-group">
+                            <option value="postal_services" data-i18n="sector-postal">Services postaux et de livraison</option>
+                            <option value="manufacturing" data-i18n="sector-manufacturing">Fabrication (dispositifs médicaux, produits chimiques)</option>
+                            <option value="digital_providers" data-i18n="sector-digital-providers">Fournisseurs numériques</option>
+                        </optgroup>
+                        <optgroup label="Autres secteurs" data-i18n="sector-other-group">
+                            <option value="retail" data-i18n="sector-retail">Commerce de détail</option>
+                            <option value="education" data-i18n="sector-education">Éducation</option>
+                            <option value="other" data-i18n="sector-other-option">Autre</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <div class="form-actions centered">
+                    <button type="button" class="btn-back" data-i18n="btn-back">Retour</button>
+                    <button type="button" class="btn-evaluate-company" data-i18n="btn-evaluate-company">Vérifier les obligations</button>
+                </div>
+            </form>
+        </section>
+        
+        <!-- Section de résultats -->
+        <section id="evaluation-results" class="hidden">
+            <div id="results-container">
+                <h3 id="results-title" data-i18n="results-title">Résultats de l'évaluation</h3>
+                <div id="results-content">
+                    <!-- Le contenu sera généré dynamiquement par JavaScript -->
+                </div>
+                <div class="form-actions centered">
+                    <button type="button" class="btn-back-to-home" data-i18n="btn-back-to-home">Retour à l'accueil</button>
+                    <button type="button" class="btn-download-report" data-i18n="btn-download-report">Télécharger le rapport</button>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -113,5 +422,6 @@
     <script src="js/dora-nis2-rules.js"></script>
     <script src="js/document-generator.js"></script>
     <script src="js/document-generator-extended.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
