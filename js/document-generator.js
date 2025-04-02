@@ -399,9 +399,46 @@
         }
     }
     
+    /**
+     * Génère un document de notification multi-réglementaire
+     */
+    function generateMultiRegulationDocument(formData, regulatoryResults) {
+        // Vérifier si le module étendu est disponible
+        if (window.documentGeneratorExtended && window.documentGeneratorExtended.generateMultiRegulationDocument) {
+            return window.documentGeneratorExtended.generateMultiRegulationDocument(formData, regulatoryResults);
+        } else {
+            // Fallback si le module étendu n'est pas disponible
+            return generateNotificationDocument(formData) + 
+                '<div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #ffc107;">' +
+                '<p><strong>Note:</strong> Le module étendu pour la génération de documents multi-réglementaires n\'est pas disponible.</p></div>';
+        }
+    }
+    
+    /**
+     * Génère un rapport avec des recommandations pour le vol de données
+     */
+    function generateDataTheftReport(formData, theftResults) {
+        // Vérifier si le module étendu est disponible
+        if (window.documentGeneratorExtended && window.documentGeneratorExtended.generateDataTheftRecommendations) {
+            return window.documentGeneratorExtended.generateDataTheftRecommendations(formData, theftResults);
+        } else {
+            // Fallback si le module étendu n'est pas disponible
+            return generateInternalDocument(formData) + 
+                '<div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #ffc107;">' +
+                '<p><strong>Note:</strong> Le module étendu pour les recommandations spécifiques au vol de données n\'est pas disponible.</p></div>';
+        }
+    }
+    
     // Exposer les fonctions publiques
     window.documentGenerator = {
         generateNotificationDocument,
-        generateInternalDocument
+        generateInternalDocument,
+        generateMultiRegulationDocument,
+        generateDataTheftReport,
+        // Exposer les fonctions utilitaires pour qu'elles soient réutilisables
+        formatDataTypes,
+        getBreachTypeName,
+        getImpactLevelName,
+        getPersonsInformedStatus
     };
 })();
