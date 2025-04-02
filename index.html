@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outil d'Évaluation d'Impact RGPD</title>
+    <title>Outil d'Évaluation d'Impact RGPD, DORA et NIS2</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1><i class="fas fa-shield-alt"></i> Outil d'Évaluation d'Impact RGPD</h1>
-            <p>Évaluez vos obligations de notification suite à une violation de données</p>
+            <h1><i class="fas fa-shield-alt"></i> Outil d'Évaluation d'Impact Réglementaire</h1>
+            <p>Évaluez vos obligations selon RGPD, DORA et NIS2 suite à une violation de données</p>
         </div>
     </header>
 
     <main class="container">
         <section id="intro">
             <h2>Évaluation de l'impact d'une violation de données</h2>
-            <p>Cet outil vous aide à déterminer si vous devez notifier l'Autorité de Protection des Données (APD) en cas de violation de données personnelles, et vous guide dans la préparation des documents nécessaires.</p>
+            <p>Cet outil vous aide à déterminer vos obligations réglementaires (RGPD, DORA, NIS2) en cas de violation de données personnelles, et vous guide dans la préparation des documents nécessaires selon votre secteur et la taille de votre entreprise.</p>
             <button id="start-evaluation" class="btn-primary">Commencer l'évaluation</button>
         </section>
 
@@ -43,6 +43,9 @@
                             <option value="data-loss">Perte de données</option>
                             <option value="data-alteration">Altération de données</option>
                             <option value="disclosure">Divulgation non autorisée</option>
+                            <option value="ransomware">Attaque par rançongiciel</option>
+                            <option value="ddos">Attaque par déni de service</option>
+                            <option value="supply_chain">Incident dans la chaîne d'approvisionnement</option>
                             <option value="other">Autre</option>
                         </select>
                     </div>
@@ -175,9 +178,131 @@
                     </div>
                 </div>
 
-                <!-- Étape 4: Mesures prises -->
+                <!-- Étape 4: Informations sur l'entreprise (nouvelle étape) -->
                 <div class="form-step hidden" id="step-4">
-                    <h3>Étape 4: Mesures prises</h3>
+                    <h3>Étape 4: Informations sur votre organisation</h3>
+                    
+                    <div class="form-group">
+                        <label for="employee-count">Nombre d'employés :</label>
+                        <input type="number" id="employee-count" name="employeeCount" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="annual-revenue">Chiffre d'affaires annuel (en euros) :</label>
+                        <input type="number" id="annual-revenue" name="annualRevenue" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Secteur d'activité (cochez tous ceux qui s'appliquent) :</label>
+                        <div class="checkbox-group">
+                            <!-- Secteurs DORA -->
+                            <h4>Entités financières (DORA)</h4>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-financial-institution" name="entityTypes" value="financial_institution">
+                                <label for="entity-financial-institution">Institution financière (banque, établissement de crédit)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-investment-firm" name="entityTypes" value="investment_firm">
+                                <label for="entity-investment-firm">Entreprise d'investissement</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-insurance" name="entityTypes" value="insurance_company">
+                                <label for="entity-insurance">Compagnie d'assurance</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-payment" name="entityTypes" value="payment_service">
+                                <label for="entity-payment">Service de paiement</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-crypto" name="entityTypes" value="crypto_asset_provider">
+                                <label for="entity-crypto">Prestataire de services sur crypto-actifs</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-ict" name="entityTypes" value="ict_service_provider">
+                                <label for="entity-ict">Prestataire de services TIC pour le secteur financier</label>
+                            </div>
+                            
+                            <!-- Secteurs NIS2 Essentiels -->
+                            <h4>Entités essentielles (NIS2)</h4>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-energy" name="entityTypes" value="energy">
+                                <label for="entity-energy">Énergie (électricité, gaz, pétrole)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-transport" name="entityTypes" value="transport">
+                                <label for="entity-transport">Transport (aérien, ferroviaire, maritime, routier)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-banking" name="entityTypes" value="banking">
+                                <label for="entity-banking">Banque (établissements de crédit)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-healthcare" name="entityTypes" value="healthcare">
+                                <label for="entity-healthcare">Santé (hôpitaux, laboratoires, fabricants médicaux)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-water" name="entityTypes" value="drinking_water">
+                                <label for="entity-water">Eau potable (production, distribution, traitement)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-digital-infra" name="entityTypes" value="digital_infrastructure">
+                                <label for="entity-digital-infra">Infrastructure numérique (DNS, TLD, cloud)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-public-admin" name="entityTypes" value="public_administration">
+                                <label for="entity-public-admin">Administration publique</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-space" name="entityTypes" value="space">
+                                <label for="entity-space">Espace (infrastructures spatiales)</label>
+                            </div>
+                            
+                            <!-- Secteurs NIS2 Importants -->
+                            <h4>Entités importantes (NIS2)</h4>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-postal" name="entityTypes" value="postal_services">
+                                <label for="entity-postal">Services postaux et de livraison</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-waste" name="entityTypes" value="waste_management">
+                                <label for="entity-waste">Gestion des déchets</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-manufacturing" name="entityTypes" value="manufacturing">
+                                <label for="entity-manufacturing">Fabrication (dispositifs médicaux, produits chimiques, etc.)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-digital-providers" name="entityTypes" value="digital_providers">
+                                <label for="entity-digital-providers">Fournisseurs numériques (places de marché, moteurs de recherche)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-research" name="entityTypes" value="research">
+                                <label for="entity-research">Recherche et enseignement supérieur</label>
+                            </div>
+                            
+                            <!-- Autres secteurs -->
+                            <h4>Autres secteurs</h4>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="entity-other" name="entityTypes" value="other">
+                                <label for="entity-other">Autre secteur d'activité</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group entity-other-details hidden">
+                        <label for="entity-other-description">Précisez votre secteur d'activité :</label>
+                        <input type="text" id="entity-other-description" name="entityOtherDescription">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev">Précédent</button>
+                        <button type="button" class="btn-next">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 5: Mesures prises -->
+                <div class="form-step hidden" id="step-5">
+                    <h3>Étape 5: Mesures prises</h3>
                     
                     <div class="form-group">
                         <label for="measures-taken">Mesures déjà prises pour remédier à la violation :</label>
@@ -226,38 +351,143 @@
         </section>
 
         <section id="evaluation-result" class="hidden">
-            <div id="notification-required" class="result-panel hidden">
-                <div class="result-header notification-required">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h2>Notification à l'APD requise</h2>
+            <!-- Onglets pour naviguer entre les différentes parties du résultat -->
+            <div class="regulation-tabs">
+                <div class="tab active" data-tab="rgpd">RGPD</div>
+                <div class="tab" data-tab="dora-nis2">DORA/NIS2</div>
+                <div class="tab" data-tab="vol-donnees">Vol de données</div>
+            </div>
+            
+            <!-- Résultats RGPD -->
+            <div class="tab-content" id="tab-rgpd">
+                <div id="notification-required" class="result-panel hidden">
+                    <div class="result-header notification-required">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Notification à l'APD requise</h2>
+                    </div>
+                    <div class="result-content">
+                        <p>Selon les informations fournies, vous êtes dans l'obligation de notifier cette violation de données à l'Autorité de Protection des Données.</p>
+                        <div id="notification-reasons"></div>
+                        <h3>Articles du RGPD applicables :</h3>
+                        <div id="applicable-articles"></div>
+                        <h3>Délai :</h3>
+                        <p>La notification doit être effectuée dans les <strong>72 heures</strong> suivant la découverte de la violation.</p>
+                        <div class="deadline-info"></div>
+                        <h3>Prochaines étapes :</h3>
+                        <ol id="next-steps-required"></ol>
+                        <button id="generate-notification" class="btn-primary">Générer le document de notification</button>
+                    </div>
                 </div>
-                <div class="result-content">
-                    <p>Selon les informations fournies, vous êtes dans l'obligation de notifier cette violation de données à l'Autorité de Protection des Données.</p>
-                    <div id="notification-reasons"></div>
-                    <h3>Articles du RGPD applicables :</h3>
-                    <div id="applicable-articles"></div>
-                    <h3>Délai :</h3>
-                    <p>La notification doit être effectuée dans les <strong>72 heures</strong> suivant la découverte de la violation.</p>
-                    <div class="deadline-info"></div>
-                    <h3>Prochaines étapes :</h3>
-                    <ol id="next-steps-required"></ol>
-                    <button id="generate-notification" class="btn-primary">Générer le document de notification</button>
+
+                <div id="notification-not-required" class="result-panel hidden">
+                    <div class="result-header notification-not-required">
+                        <i class="fas fa-check-circle"></i>
+                        <h2>Notification à l'APD non requise</h2>
+                    </div>
+                    <div class="result-content">
+                        <p>Selon les informations fournies, vous n'êtes pas dans l'obligation de notifier cette violation de données à l'Autorité de Protection des Données.</p>
+                        <div id="non-notification-reasons"></div>
+                        <h3>Justification :</h3>
+                        <div id="justification"></div>
+                        <h3>Cependant, vous devez :</h3>
+                        <ol id="next-steps-not-required"></ol>
+                        <button id="generate-documentation" class="btn-secondary">Générer la documentation interne</button>
+                    </div>
                 </div>
             </div>
-
-            <div id="notification-not-required" class="result-panel hidden">
-                <div class="result-header notification-not-required">
-                    <i class="fas fa-check-circle"></i>
-                    <h2>Notification à l'APD non requise</h2>
+            
+            <!-- Résultats DORA/NIS2 -->
+            <div class="tab-content hidden" id="tab-dora-nis2">
+                <!-- Informations sur l'entreprise -->
+                <div class="company-info-card">
+                    <h3>Informations sur votre organisation</h3>
+                    <div id="company-size-info"></div>
                 </div>
-                <div class="result-content">
-                    <p>Selon les informations fournies, vous n'êtes pas dans l'obligation de notifier cette violation de données à l'Autorité de Protection des Données.</p>
-                    <div id="non-notification-reasons"></div>
-                    <h3>Justification :</h3>
-                    <div id="justification"></div>
-                    <h3>Cependant, vous devez :</h3>
-                    <ol id="next-steps-not-required"></ol>
-                    <button id="generate-documentation" class="btn-secondary">Générer la documentation interne</button>
+                
+                <!-- Résumé des réglementations applicables -->
+                <div class="regulations-summary">
+                    <h3>Réglementations applicables</h3>
+                    <div id="applicable-regulations-summary"></div>
+                </div>
+                
+                <!-- Carte des réglementations DORA -->
+                <div id="dora-regulation" class="regulation-card">
+                    <div class="regulation-header">
+                        <div class="regulation-icon">
+                            <i class="fas fa-landmark"></i> DORA
+                        </div>
+                        <div class="regulation-tag tag-dora">Finance</div>
+                        <div id="dora-status" class="regulation-status"></div>
+                    </div>
+                    <div class="regulation-details">
+                        <p>Le règlement européen sur la résilience opérationnelle numérique du secteur financier.</p>
+                        <div id="dora-details"></div>
+                        <div id="dora-deadline" class="deadline-info"></div>
+                        <h4>Exigences applicables :</h4>
+                        <ul id="dora-requirements" class="requirements-list"></ul>
+                    </div>
+                </div>
+                
+                <!-- Carte des réglementations NIS2 -->
+                <div id="nis2-regulation" class="regulation-card">
+                    <div class="regulation-header">
+                        <div class="regulation-icon">
+                            <i class="fas fa-network-wired"></i> NIS2
+                        </div>
+                        <div class="regulation-tag tag-nis2">Cybersécurité</div>
+                        <div id="nis2-status" class="regulation-status"></div>
+                    </div>
+                    <div class="regulation-details">
+                        <p>La directive européenne sur la sécurité des réseaux et des systèmes d'information.</p>
+                        <div id="nis2-details"></div>
+                        <div id="nis2-deadline" class="deadline-info"></div>
+                        <h4>Exigences applicables :</h4>
+                        <ul id="nis2-requirements" class="requirements-list"></ul>
+                    </div>
+                </div>
+                
+                <!-- Résumé des délais de notification -->
+                <div class="regulation-card">
+                    <div class="regulation-header">
+                        <div class="regulation-icon">
+                            <i class="fas fa-clock"></i> Délais de notification
+                        </div>
+                    </div>
+                    <div class="regulation-details">
+                        <div id="notification-deadlines-summary"></div>
+                    </div>
+                </div>
+                
+                <div class="document-actions">
+                    <button id="generate-multi-regulation" class="btn-primary">Générer le document multi-réglementations</button>
+                </div>
+            </div>
+            
+            <!-- Résultats Vol de données -->
+            <div class="tab-content hidden" id="tab-vol-donnees">
+                <div class="result-panel">
+                    <div class="result-header notification-required">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Recommandations spécifiques au vol de données</h2>
+                    </div>
+                    <div class="result-content">
+                        <p>Le vol de données nécessite des mesures spécifiques en plus des obligations réglementaires.</p>
+                        
+                        <h3>Actions immédiates recommandées :</h3>
+                        <ul id="theft-immediate-actions" class="requirements-list"></ul>
+                        
+                        <div id="theft-data-specific" class="theft-recommendations hidden">
+                            <h4>Recommandations spécifiques selon les types de données volées :</h4>
+                            <div id="theft-specific-recommendations"></div>
+                        </div>
+                        
+                        <h3>Mesures de suivi à long terme :</h3>
+                        <ul id="theft-followup-actions" class="requirements-list"></ul>
+                        
+                        <div class="document-actions">
+                            <button id="generate-theft-recommendations" class="btn-primary">Générer le plan d'action</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -274,13 +504,14 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Outil d'Évaluation d'Impact RGPD | <a href="https://github.com/servais1983/rgpd-impact-evaluation-tool" target="_blank">GitHub</a></p>
+            <p>&copy; 2025 Outil d'Évaluation d'Impact Réglementaire | <a href="https://github.com/servais1983/rgpd-impact-evaluation-tool" target="_blank">GitHub</a></p>
             <p class="disclaimer">Cet outil est fourni à titre informatif et ne remplace pas un avis juridique professionnel.</p>
         </div>
     </footer>
 
     <script src="js/app.js"></script>
     <script src="js/rgpd-rules.js"></script>
+    <script src="js/dora-nis2-rules.js"></script>
     <script src="js/document-generator.js"></script>
 </body>
 </html>
