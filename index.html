@@ -39,7 +39,7 @@
                         <select id="breach-type" name="breach-type" required>
                             <option value="">-- Sélectionnez --</option>
                             <option value="unauthorized-access">Accès non autorisé</option>
-                            <option value="data-theft">Vol de données</option>
+                            <option value="theft">Vol de données</option>
                             <option value="data-loss">Perte de données</option>
                             <option value="data-alteration">Altération de données</option>
                             <option value="disclosure">Divulgation non autorisée</option>
@@ -459,7 +459,7 @@
                 </div>
                 
                 <div class="document-actions">
-                    <button id="generate-multi-regulation" class="btn-primary">Générer le document multi-réglementations</button>
+                    <button id="generate-multi-reg" class="btn-primary">Générer le document multi-réglementations</button>
                 </div>
             </div>
             
@@ -473,19 +473,21 @@
                     <div class="result-content">
                         <p>Le vol de données nécessite des mesures spécifiques en plus des obligations réglementaires.</p>
                         
-                        <h3>Actions immédiates recommandées :</h3>
-                        <ul id="theft-immediate-actions" class="requirements-list"></ul>
-                        
-                        <div id="theft-data-specific" class="theft-recommendations hidden">
-                            <h4>Recommandations spécifiques selon les types de données volées :</h4>
-                            <div id="theft-specific-recommendations"></div>
+                        <div id="theft-results">
+                            <h3>Actions immédiates recommandées :</h3>
+                            <ul id="theft-immediate-actions" class="requirements-list"></ul>
+                            
+                            <div id="theft-data-specific" class="theft-recommendations hidden">
+                                <h4>Recommandations spécifiques selon les types de données volées :</h4>
+                                <div id="theft-specific-recommendations"></div>
+                            </div>
+                            
+                            <h3>Mesures de suivi à long terme :</h3>
+                            <ul id="theft-followup-actions" class="requirements-list"></ul>
                         </div>
                         
-                        <h3>Mesures de suivi à long terme :</h3>
-                        <ul id="theft-followup-actions" class="requirements-list"></ul>
-                        
                         <div class="document-actions">
-                            <button id="generate-theft-recommendations" class="btn-primary">Générer le plan d'action</button>
+                            <button id="generate-theft-report" class="btn-primary">Générer le plan d'action</button>
                         </div>
                     </div>
                 </div>
@@ -513,5 +515,6 @@
     <script src="js/rgpd-rules.js"></script>
     <script src="js/dora-nis2-rules.js"></script>
     <script src="js/document-generator.js"></script>
+    <script src="js/document-generator-extended.js"></script>
 </body>
 </html>
