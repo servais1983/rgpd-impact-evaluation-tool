@@ -1,3 +1,7 @@
+![QIUZ5GIfHSBqWYIpquNqt](https://github.com/user-attachments/assets/86414345-abab-46c8-a93a-b4b66a643c1a)
+
+
+
 # Outil d'Évaluation d'Impact RGPD
 
 Application web qui aide à déterminer si une notification à l'Autorité de Protection des Données (APD) est nécessaire suite à une violation de données, et prépare les documents requis selon les types de données qui auraient pu être exfiltrées et les articles du RGPD qui s'appliquent.
