@@ -1,4 +1,4 @@
-![QIUZ5GIfHSBqWYIpquNqt](https://github.com/user-attachments/assets/86414345-abab-46c8-a93a-b4b66a643c1a)
+![QIUZ5GIfHSBqWYIpquNqt](rgpdimpact.png)
 
 
 
